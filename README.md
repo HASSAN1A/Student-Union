@@ -52,7 +52,7 @@ Here is a run through of how to set up the application:
 * **Step 5** : Download the all dependencies in the requirements.txt using **`pip install -r requirements.txt`**
 * **Step 6** : Create the Database
     * - psql
-    * - CREATE DATABASE grade_it;
+    * - CREATE DATABASE students;
 * **Step 7** : .env file
     * Create .env file and paste paste the following filling where appropriate:
 
