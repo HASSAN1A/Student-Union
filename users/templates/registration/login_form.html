@@ -1,0 +1,30 @@
+{%extends "registration/base.html"%}
+{%block content%}
+<div style="margin-top: 4rem;width: 50vw;" class="card mx-auto content">
+    <div class="text-center">
+        {% if form.errors %}
+        <p style="color: red;"> Some Information Might be Incorrect </p>
+        {% endif %}
+    </div>
+    <div class="card-body">
+        <form class="form-signin" method="POST">
+            <h2 style="font-weight: 600;" class="text-center">Student Uni</h2>
+            {% csrf_token %}
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" name="username" id="username" class="form-control mt-4" placeholder="Username" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="password" id="inputPassword" class="form-control mt-4" placeholder="Password" required>
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg aqua-gradient-rgba btn-block" type="submit">Sign in</button>
+        </form>
+    </div>
+</div>
+<div style="width:50vw" id = "no_account">
+    <h4>Don't have an account?<a href="{% url 'register_user' %}"> Sign up</a></h4>
+</div>
+
+{%endblock%}
