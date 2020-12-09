@@ -22,7 +22,7 @@ class StudentUnion(models.Model):
         return self.union_name
 
     class Meta:
-        ordering = ['create_at'] 
+        ordering = ['create_at']
 
     def create_studentunion(self):
       '''
@@ -36,7 +36,7 @@ class StudentUnion(models.Model):
       Deletes StudentUnion based on its id
       '''
       cls.objects.filter(id=union_id).delete()
-      
+
 
     @classmethod
     def get_all_studentunions(cls):
@@ -44,7 +44,7 @@ class StudentUnion(models.Model):
       Returns all StudentUnion objects from db
       '''
       unions=cls.objects.all()
-      return unions 
+      return unions
 
 
     @classmethod
@@ -70,7 +70,7 @@ class Business(models.Model):
         return self.bs_name
 
     class Meta:
-        ordering = ['create_at'] 
+        ordering = ['create_at']
 
     def create_business(self):
       '''
@@ -83,7 +83,7 @@ class Business(models.Model):
       Deletes Business instance from db
       '''
       self.delete()
-      
+
 
     @classmethod
     def get_all_bs_by_union(cls,union_id):
@@ -91,7 +91,7 @@ class Business(models.Model):
       Returns all Businesses in the union objects from db
       '''
       bs=cls.objects.filter(studentunion_id=union_id)
-      return bs 
+      return bs
 
 
     @classmethod
