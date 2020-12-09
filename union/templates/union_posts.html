@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{%load static%}
+{% load bootstrap3 %} 
+{%block title%}
+{{form.media }}
+{%endblock%}
+{%block styles%}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/comments.css' %}">
+{%endblock%}
+{%block content%}
+<div class="container" style="padding-top: 5vh;">
+  <div class="mx-auto mb-3 col-md-6">
+    <div class="card border-info mx-sm-1 p-3">
+        <div class="card border-info shadow text-info p-3 my-card" ><i class="fas fa-blog"></i></div>
+        <div class="text-info text-center mt-3"><h4>Posts</h4></div>
+        <div class="text-info text-center mt-2"><h1>{{posts|length}}</h1></div>
+        <button data-toggle="modal" data-target="#postFormModal" class="btn btn-md aqua-gradient">Create Post</button>
+    </div>
+  </div>
+  {%for post in posts%}
+  <div class="card mb-2">
+    <div class="post">
+      <div class="name">
+        {%if post.user.profile.profile_photo.cdn_url%}
+        <img src="{{post.user.profile.profile_photo.cdn_url}}" width="5%" height="5%" class="profile-img"/>
+        {%else%}
+          <img src="https://www.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class="rounded-circle z-depth-0"
+          alt="avatar image" width="5%" height="5%" >
+        {%endif%}  
+        <p class="ml-3">{{post.user.username}}</p>
+      </div>
+      
+    </div>
+    <hr class="mt-1 w-100">
+    <h6 class="p-2 mb-0">
+      {{post.post_title}}
+    </h6>
+    <p class="p-2 mb-0">
+      {{post.post_text}}
+    </p>
+    <p style="font-size: 0.8rem" class="pl-2 text-muted">{{post.upload_date|timesince}} ago</p>
+   
+    
+  </div>
+  {%endfor%}
+</div>
+<div class="modal fade" id="postFormModal" tabindex="-1" role="dialog" aria-labelledby="postFormLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="mx-auto modal-title text-center" id="exampleModalLabel">Create post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  action="" method="post" enctype="multipart/form-data">
+          {%csrf_token%}
+      
+          {% bootstrap_form form%}
+          <div class="text-center">
+            <input type="submit" class=" btn aqua-gradient btn-lg" value="POST">
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}
