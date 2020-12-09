@@ -1,0 +1,61 @@
+{%load static%}
+{% block styles%}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+{% endblock styles%}
+
+<nav class="mb-1 navbar navbar-expand-lg navbar-light ">
+  <a class="navbar-brand" href="{%url 'home_page'%}">Student Union</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+    aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div style="width: 100;" class="collapse navbar-collapse" id="navbarSupportedContent-555">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+      <form action="{% url 'search_business' %}" class="form-inline mr-auto my-1">
+        <div class="md-form form-sm my-0">
+          <input class="form-control form-control-sm mr-sm-2 mb-0" name="bs_name" id="bs_name" type="text" placeholder="Search Business"
+            aria-label="Search">
+        </div>
+      </form>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+    
+      <li class="nav-item ">
+        <a class="nav-link" href="{%url 'home_page'%}"><i class="fas fa-home"></i>Home
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="{%url 'e_services'%}"><i class="fas fa-hospital"></i>E-Services
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="{%url 'union_bs'%}"><i class="fas fa-briefcase"></i>Businesses
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="{%url 'union_posts'%}"><i class="far fa-comments"></i>Comments
+        </a>
+      </li>
+      <li class="nav-item avatar dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+         {%if request.user.profile.profile_photo.cdn_url%}
+         <img src="{{request.user.profile.profile_photo.cdn_url}}" width="28px" height="28px" alt="avatar image" class="rounded-circle z-depth-0"/>
+         {%else%}
+         <img src="https://www.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class="rounded-circle z-depth-0"
+         alt="avatar image" width="28px" height="28px" >
+         {%endif%}
+     
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg-right text-center dropdown-secondary"
+          aria-labelledby="navbarDropdownMenuLink-55">
+          <a class="dropdown-item" href="{%url 'my_profile'%}">Profile</a>
+          <a class="dropdown-item" href="{%url 'my_profile'%}">Edit Profile</a>
+          <a class="dropdown-item" href="/logout">LOGOUT</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
