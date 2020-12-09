@@ -1,0 +1,143 @@
+{% extends 'base.html'%}
+{%load static%}
+{% block styles%}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
+{% endblock styles%}
+{%block content%}
+<div class="services-section">
+  <div class="inner-width">
+    <h1 class="section-title">Emergency Services</h1>
+    <div class="border"></div>
+    <div class="services-container">
+
+      <div data-toggle="modal" data-target="#hosModal" class="service-box">
+        <div class="service-icon">
+          <img src="{%static 'img/health.jpg'%}" width="70px" height="70px"/>
+        </div>
+        <div class="service-title">Hospitals</div>
+        <div class="service-desc">
+          Empowering students to Improve Their Lives by getting proper medical care.
+        </div>
+      </div>
+
+      <div data-toggle="modal" data-target="#polModal" class="service-box">
+        <div class="service-icon">
+          <img src="{%static 'img/sec.jpg'%}" width="70px" height="70px"/>
+        </div>
+        <div class="service-title">Students Security</div>
+        <div class="service-desc">
+          To Protect the students environment and to make sure they are safe.
+        </div>
+      </div>
+
+      <div data-toggle="modal" data-target="#accModal" class="service-box">
+        <div class="service-icon">
+          <img src="{%static 'img/acc.jpg'%}" width="70px" height="70px"/>
+        </div>
+        <div class="service-title">Students Accommodation</div>
+        <div class="service-desc">
+          In case you need to needd to get or have accommodation issues a single phone call will get you assisted  wthin no time </div>
+      </div>
+
+
+
+      <div class="modal fade" id="hosModal" tabindex="-1" role="dialog" aria-labelledby="hosLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{h_services | length}} Hospitals in your </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              {%for hos in h_services%}
+              <div class="infocardContainer">
+                <div id="main">
+                  <img src="{%static 'img/health.jpg'%}"/>
+                </div>
+                <div id="textbois">
+                  <h2 style="font-size: 1rem;">{{hos.name}}</h2>
+                  <h4 style="font-size: 0.9rem;">{{hos.location}}</h4>
+                  <a href="tel:{{hos.contact}}">Call {{hos.contact}}</a>
+                </div>
+              </div>
+              {%endfor%}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="polModal" tabindex="-1" role="dialog" aria-labelledby="polLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{p_services | length}} security base in your Union</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              {%for pol in p_services%}
+              <div class="infocardContainer">
+                <div id="main">
+                  <img src="{%static 'img/police.png'%}"/>
+                </div>
+                <div id="textbois">
+                  <h2 style="font-size: 1rem;">{{pol.name}}</h2>
+                  <h4 style="font-size: 0.9rem;">{{pol.location}}</h4>
+                  <a href="tel:{{pol.contact}}">Call {{pol.contact}}</a>
+                </div>
+              </div>
+              {%endfor%}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="accModal" tabindex="-1" role="dialog" aria-labelledby="accLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{f_services | length}} Accomodation in your Union</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              {%for acc in acc_services%}
+              <div class="infocardContainer">
+                <div id="main">
+                  <img src="{%static 'img/acc.jpg'%}"/>
+                </div>
+                <div id="textbois">
+                  <h2 style="font-size: 1rem;">{{acc.name}}</h2>
+                  <h4 style="font-size: 0.9rem;">{{acc.location}}</h4>
+                  <a href="tel:{{acc.contact}}">Call {{acc.contact}}</a>
+                </div>
+              </div>
+              {%endfor%}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      
+
+    
+    </div>
+  </div>
+</div>
+{%endblock%}
