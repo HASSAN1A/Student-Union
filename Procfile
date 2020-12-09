@@ -1,0 +1,1 @@
+web: gunicorn studentunion.wsgi --log-file -
