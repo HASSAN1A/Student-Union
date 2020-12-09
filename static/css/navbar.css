@@ -1,0 +1,14 @@
+a.navbar-brand{
+  font-weight: 600;
+  font-family: 'Spectral', serif;
+  font-size: 1.5rem;
+}
+.dropdown-menu a{
+  font-family:'Sintony', sans-serif;
+}
+@media (min-width: 992px){
+  .navbar-expand-lg{
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+}
