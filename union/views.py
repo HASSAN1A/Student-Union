@@ -39,7 +39,7 @@ def home_page(request):
 def join_union(request,union_id):
   union=StudentUnion.find_studentunion(union_id)
   Profile.objects.filter(user=request.user).update(studentunion=union)
-  StudentUnion.objects.filter(id=union_id).update(union_members=F("union_members") + 1)  
+  StudentUnion.objects.filter(id=union_id).update(union_members=F("union_members") + 1)
   messages.success(request, f'You joined {union.union_name} studentunion.')
   return redirect ('home_page')
 
