@@ -1,0 +1,194 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block styles%}
+{{block.super}}
+<link rel="stylesheet" type="text/css"
+  href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+<link rel="stylesheet" type="text/css"
+  href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+{%endblock%}
+{%block content%}
+<div class="container text-center">
+  {%if request.user.profile.studentunion%}
+  <section id="minimal-statistics">
+    <div class="row">
+      <div class="col-12 mt-3 mb-1">
+        <h3><span class="badge badge-primary">{{request.user.profile.studentunion.union_name|title}} Union</span></h3>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-lg-6 col-sm-6 col-12 my-1">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="primary">{{bss|length}}</h3>
+                  <span>Business</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-support primary font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-sm-6 col-12 my-1">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="align-self-center">
+                  <i class="icon-graph success font-large-2 float-left"></i>
+                </div>
+                <div class="media-body text-right">
+                  <h3>{{h_services|length}}</h3>
+                  <span>Hospitals</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 col-12 my-1">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="danger">{{p_services|length}}</h3>
+                  <span>Students Accommodation</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-rocket danger font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-lg-6 col-sm-6 col-12 my-1">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="warning">{{p_services|length}}</h3>
+                  <span>Students Security</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-pie-chart warning font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6 col-sm-6 col-12 my-1">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="primary">{{posts|length}}</h3>
+                  <span>New Posts</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-book-open primary font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-sm-6 col-12 my-1">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="success">{{request.user.profile.studentunion.union_members}}</h3>
+                  <span>Members</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="icon-cup success font-large-2 float-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {%else%}
+  <div class="container  join-union" style="margin-top:10%">
+    <div class="row no-gutters slider-text justify-content-center align-items-center">
+      <div class="col-lg-8 col-md-6 d-flex align-items-end fadeInUp">
+        <div class="text text-center">
+          <h1 class="mb-4">The Best <br>Way to Stay connected with students and get assisted</h1>
+          <p style="font-size: 18px;">{{request.user.username | title}}, Welcome to Student  Union .Join a union to access all
+            services in your student union</p>
+          <button class="btn aqua-gradient" data-toggle="modal" data-target="#unionsModal">JOIN UNION</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="unionsModal" tabindex="-1" role="dialog" aria-labelledby="unionsLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Join Student Union</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="list-group-flush">
+            {%if unions%}
+            {%for union in unions%}
+            <div class="list-group-item">
+              <p class="mb-0">
+                {%if union.union_photo.cdn_url%}
+                <img src="{{union.union_photo.cdn_url}}" class="rz-depth-0 mr-4" alt="avatar image" height="35">
+                {%else%}
+                <img src="{%static 'img/houses.jpg'%}" class="z-depth-0 mr-4" alt="avatar image" height="35">
+                {%endif%}
+                {{union.union_name}}
+                <a href="{%url 'join_union' union.id%}"><button
+                    class="btn aqua-gradient float-right ml-auto">Join</button></a>
+
+              </p>
+            </div>
+            {%endfor%}
+            {%else%}
+            <div class="list-group-item">
+              <p class="mb-0">No available registered student unions at the moment</p>
+            </div>
+            {%endif%}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {%endif%}
+</div>
+
+{%endblock%}
