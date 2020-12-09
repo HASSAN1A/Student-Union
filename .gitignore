@@ -1,0 +1,9 @@
+virtual/
+start.sh
+*.pyc
+.env
+# Object file
+*.o
+
+# Ada Library Information
+*.ali
