@@ -97,8 +97,13 @@ Here are the summary:
 
 
 ## API-Endpoints
-* https://jumaawardsapp.herokuapp.com//api/profiles  -  List profiles registered with awwards
-* https://jumaawardsapp.herokuapp.com//api/projects  -  Returns information pertaining to all the projects posted in awwards
+* https://studentunionhs.herokuapp.com//api/profiles  -  List profiles registered with student union
+* https://studentunionhs.herokuapp.com//api/business  -  Returns information pertaining to all the business posted in student union
+* https://studentunionhs.herokuapp.com//api/business
+* https://studentunionhs.herokuapp.com//api/business
+* https://studentunionhs.herokuapp.com//api/business
+* https://studentunionhs.herokuapp.com//api/business
+
 
 ## Requirements
 * This program requires python3.+ (and pip) installed, a guide on how to install python on various platforms can be found [here](https://www.python.org/)
