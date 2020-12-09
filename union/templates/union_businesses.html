@@ -1,0 +1,74 @@
+{%extends 'base.html'%}
+{%load static%}
+{% load bootstrap3 %} 
+{%block title%}
+{{form.media }}
+{%endblock%}
+{%block styles%}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/bs.css' %}">
+{%endblock%}
+{%block content%}
+<div class="container" style="min-height:100vh;padding-top: 5vh;">
+  <div class="mx-auto mb-3 col-md-6">
+    <div class="card border-info mx-sm-1 p-3">
+        <div class="card border-info shadow text-info p-3 my-card" ><i class="fas fa-briefcase"></i></div>
+        <div class="text-info text-center mt-3"><h4>Businesses</h4></div>
+        <div class="text-info text-center mt-2"><h1>{{bss|length}}</h1></div>
+        <button style="width: 50%;" data-toggle="modal" data-target="#addbsModal" class="mx-auto btn btn-md aqua-gradient">Add Business</button>
+    </div>
+  </div>
+  <div class="row" style="padding-top: 5vh;">
+    {%for bs in bss%}
+    <div class="mx-auto mb-4 col-md-6 col-lg-4 col-sm-12">
+      <div class="card" id="bs-container">
+        {%if bs.bs_photo.cdn_url%}
+        <div style="background: url({{bs.bs_photo.cdn_url}});" class="profile-img"></div>
+        {%else%}
+        <div style="background: url({%static 'img/houses.png'%});" class="profile-img"></div>
+        {%endif%}
+        <h1>
+          {{bs.bs_name}}
+        </h1>
+        <div class="description">
+         {{bs.bs_description}}
+        </div>
+        <p class="card-text"><small class="text-muted">{{bs.bs_email}}</small></p>
+        <button class="btn btn-sm "> <a class="text-white" href="mailto:{{bs.bs_email}}">Email me</a> </button>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+  
+  <div class="modal fade" id="addbsModal" tabindex="-1" role="dialog" aria-labelledby="addbsLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header ">
+          <h5 class="modal-title text-center" id="exampleModalLabel">Add Business</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form  action="" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+        
+            {% bootstrap_form form%}
+            <div class="text-center">
+              <input type="submit" class=" btn btn-success btn-lg" value="ADD">
+            </div>
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>  
+
+{%endblock%}
