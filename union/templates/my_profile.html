@@ -1,0 +1,54 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %} 
+{% load static%}
+{%block title%}
+{{form.media }}
+{%endblock%}
+{%block styles%}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{%endblock%}
+{%block content%}
+<div class="container mt-3 my-profile">
+  <div class="card profile-card-1">
+    <img src="https://images.pexels.com/photos/946351/pexels-photo-946351.jpeg?w=500&h=650&auto=compress&cs=tinysrgb" alt="profile-sample1" class="background"/>
+    {%if request.user.profile.profile_photo.cdn_url%}
+    <img src="{{request.user.profile.profile_photo.cdn_url}}" alt="avatar image" class="profile"/>
+    {%else%}
+    <img src="https://www.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" class="profile"
+    alt="avatar image" >
+    {%endif%}
+  <div class="card-content">
+  <h2>{{profile.user.username}}<small>{{profile.bio}}</small><small><i class="fas fa-map-marker-alt mr-2"></i>{%if profile.location%}{{profile.location}}{%else%}None{%endif%}</small><small><i class="fas fa-phone-square"></i>{%if profile.contact%}{{profile.contact}}{%else%}None{%endif%}</small></h3>
+    <button data-toggle='modal' data-target="#profileFormModal"  style="width: 40%;" class="my-3 mx-auto btn btn-md aqua-gradient">Edit Profile</button>
+  </div>
+  </div>
+</div>                           
+  
+<div class="modal fade" id="profileFormModal" tabindex="-1" role="dialog" aria-labelledby="profileFormLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Edit Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  action="" method="post" enctype="multipart/form-data">
+          {%csrf_token%}
+      
+          {% bootstrap_form form%}
+          <div class="text-center">
+            <input type="submit" class=" btn btn-success btn-md" value="UPDATE">
+          </div>
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}
