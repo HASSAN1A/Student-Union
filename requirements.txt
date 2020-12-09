@@ -1,4 +1,5 @@
 asgiref==3.2.10
+autopep8==1.5.4
 certifi==2020.6.20
 chardet==3.0.4
 cloudinary==1.23.0
@@ -10,11 +11,13 @@ gunicorn==20.0.4
 idna==2.10
 Pillow==2.2.1
 psycopg2==2.8.6
+pycodestyle==2.6.0
 python-dateutil==2.8.1
 python-decouple==3.3
 pytz==2020.1
 requests==2.24.0
 six==1.15.0
 sqlparse==0.4.1
+toml==0.10.2
 urllib3==1.25.11
 whitenoise==5.2.0
