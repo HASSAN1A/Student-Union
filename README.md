@@ -98,12 +98,12 @@ Here are the summary:
 
 
 ## API-Endpoints
-* https://studentunionhs.herokuapp.com//api/profiles  -  List profiles registered with student union
-* https://studentunionhs.herokuapp.com//api/business  -  Returns information pertaining to all the business posted in student union
-* https://studentunionhs.herokuapp.com//api/business
-* https://studentunionhs.herokuapp.com//api/business
-* https://studentunionhs.herokuapp.com//api/business
-* https://studentunionhs.herokuapp.com//api/business
+1. https://studentunionhs.herokuapp.com//union/myprofile'  -  List profiles registered with student union.
+2. https://studentunionhs.herokuapp.com//union/businesses  -  Returns information pertaining to all the business posted in student union.
+3. https://studentunionhs.herokuapp.com//join/union/<union_id>  -  Returns join ids for students.
+4. https://studentunionhs.herokuapp.com//union/emergency-services  -   Returns emergency services offered to students.
+5. https://studentunionhs.herokuapp.com//union/posts  -   Returns posts from the union members.
+6. https://studentunionhs.herokuapp.com//union/search/business  -   Returns search results for business.
 
 
 ## Requirements
