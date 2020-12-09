@@ -19,7 +19,8 @@ The WebApp is compatible with devices of all sizes and all OS's, and consistent 
 
 
 
-#### Get Live link here : [USAGE](https://jumaawardsapp.herokuapp.com/)
+#### Get Live link here : [USAGE](https://studentunionhs.herokuapp.com/)
+
 
 
 ## Description
