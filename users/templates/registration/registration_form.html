@@ -1,0 +1,25 @@
+{%extends "registration/base.html"%} 
+{% load bootstrap3 %}
+{% block content %}
+<section id="content">
+  <div class="text-center">
+    {% if form.errors %}
+    <p style="color: red;"> Some Information Might be Incorrect </p>
+    {% endif %}
+  </div>
+  <form  method="post">
+    <h2 class="text-center">Student Unionnnnn</h2>
+    {% csrf_token %}
+    {% bootstrap_form form%}
+    <div class="form-group">
+      <input type="submit" class="btn aqua-gradient-rgba btn-sm" value="Sign Up">
+    </div>
+    <input type="hidden" name="next" value="{{next}}">
+  </form>
+</section>
+<div id = "no_account">
+    <h4>Have an account?<a href="{% url 'user_login' %}"> Log in</a></h4>
+</div>
+
+
+{% endblock %}
