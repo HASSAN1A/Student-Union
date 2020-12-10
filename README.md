@@ -141,7 +141,7 @@ Or follow these steps:
 9. [Google Font API](https://dillinger.io/fonts.google.com) : For prettier fonts Making the web more beautiful, fast, and open through great typography..
 11. [Font Awesome](fontawesome.com) : The world's most popular and easiest to use icon set just got an upgrade. More icons. More styles.
 12. [jQuery 3](https://jquery.com/) : For special effects.
-13. [Figma](https://www.figma.com/file/iTndFXbWHuGkZ1ak60bXr2h/Awwards?node-id=0%3A1) - Blueprint for designing the web app.
+13. [Figma](https://www.figma.com/file/2H2ZhDqgAk4vYegMht55Sy/Student-Union?node-id=0%3A1) - Blueprint for designing the web app.
 
 ## TEAM
 
